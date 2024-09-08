@@ -56,3 +56,39 @@ class DivisionEntera(Scene):
         ab_and_condition = VGroup(ab_integers, b_condition)
         self.play(ab_and_condition.animate.to_corner(UL))
         self.wait(1)
+
+        # Mostrar q, r \in \mathbb{Z} en el centro de la pantalla
+        qr_integers = MathTex(r"q", r",", r"r", r"\in")
+        Z_qr = MathTex(r"\mathbb{Z}").next_to(qr_integers, RIGHT)
+        qr_integers.set_color_by_tex("q", YELLOW)
+        qr_integers.set_color_by_tex("r", ORANGE)
+        qr_group = VGroup(qr_integers, Z_qr).scale(1.5)
+        qr_group.move_to(ORIGIN)
+        self.play(Write(qr_group))
+        self.wait(1)
+
+        # Crear la línea vertical blanca
+        separator_line = Line(start=UP * 1, end=DOWN * 1.5, color=WHITE)
+        separator_line.next_to(ab_group, RIGHT, buff=0.75)
+
+        # Mover qr_group al lado de ab_group, cambiar su tamaño y mostrar la línea vertical
+        self.play(
+            qr_group.animate.next_to(separator_line, RIGHT).scale(1/1.5),
+            Create(separator_line)
+        )
+        self.wait(1)
+
+        # q y r aparecen en el centro de la pantalla con definiciones y colores
+        tamaño_fuente = 72  # Puedes ajustar este valor según tus preferencias
+
+        q_definition = MathTex(r"q", r": \text{coeficiente}", font_size=tamaño_fuente)
+        q_definition[0].set_color(YELLOW)
+
+        r_definition = MathTex(r"r", r": \text{resto}", font_size=tamaño_fuente)
+        r_definition[0].set_color(ORANGE)
+
+        definitions = VGroup(q_definition, r_definition).arrange(DOWN, buff=0.75)  # Aumenté el buffer para más espacio entre las definiciones
+        definitions.move_to(ORIGIN)  # Centra el grupo en la pantalla
+
+        self.play(Write(definitions))
+        self.wait(1)
