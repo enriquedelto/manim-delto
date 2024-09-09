@@ -10,32 +10,77 @@
     Este repositorio contiene el código fuente de las animaciones matemáticas creadas con Manim para mi canal de YouTube. Cada carpeta corresponde a un vídeo específico y contiene los scripts de Python utilizados para generar las animaciones.
 </p>
 
+## 📋 Tabla de Contenidos
+- [🚀 Cómo Usar](#-cómo-usar)
+- [🎙️ Servicios de Voz](#️-servicios-de-voz)
+- [🤝 Contribuciones](#-contribuciones)
+- [🔗 Enlaces Útiles](#-enlaces-útiles)
+
 ## 🚀 Cómo Usar
 
-1. Asegúrate de tener Manim instalado en tu sistema. Puedes encontrar instrucciones de instalación en [la documentación oficial de Manim](https://docs.manim.community/en/stable/installation.html).
+1. **Instala Manim**: Sigue las [instrucciones oficiales](https://docs.manim.community/en/stable/installation.html).
 
-2. Clona este repositorio:
+2. **Instala Manim Voiceover**:
+   ```bash
+   pip install "manim-voiceover[azure,gtts]"
+   ```
+
+3. **Instala SoX (Sound eXchange)**:
+   - Windows: Descarga e instala desde [SourceForge](https://sourceforge.net/projects/sox/files/sox/).
+   - Mac: `brew install sox`
+   - Linux: `sudo apt-get install sox libsox-fmt-all`
+
+4. **Configura Azure Speech Service** (opcional):
+   - Crea una cuenta en Azure y un recurso de Speech Service.
+   - Crea un archivo `.env` en el directorio del proyecto:
+     ```bash
+     AZURE_SUBSCRIPTION_KEY="tu_clave_aquí"
+     AZURE_SERVICE_REGION="tu_región_aquí"
+     ```
+
+5. **Clona el repositorio**:
    ```bash
    git clone https://github.com/enriquedelto/manim-delto.git
    ```
 
-3. Navega a la carpeta del tema que te interese y ejecuta el script de Python correspondiente con Manim usando el comando:
-    ```bash 
-    manim -pql archivo.py NombreDeLaEscena
-    ```
-    > 💡 Opciones de comando:
-    > - `-p`: Reproduce el video automáticamente al terminar.
-    > - `-ql`: Renderiza en calidad baja (480p) para una vista previa rápida.
-    > - Otras opciones de calidad: `-qm` (720p), `-qh` (1080p), `-qk` (4K).
+6. **Ejecuta los scripts**:
+   ```bash 
+   manim -pql archivo.py NombreDeLaEscena
+   ```
+   > 💡 Opciones: `-p` (reproducir), `-ql` (480p), `-qm` (720p), `-qh` (1080p), `-qk` (4K)
+
+## 🎙️ Servicios de Voz
+
+Manim Voiceover ofrece varios sintetizadores de voz:
+
+| Servicio | Calidad | Offline | Pago/Cuenta | Notas |
+|----------|---------|---------|-------------|-------|
+| Azure | Muy buena | No | Sí | 500 min/mes gratis |
+| ElevenLabs | Muy buena | No | Sí | - |
+| Coqui | Buena | Sí | No | Requiere PyTorch |
+| GTTS | Buena | No | No | API gratuita de Google |
+| OpenAI | Muy buena | No | Sí | - |
+| PyTTSX3 | Básica | Sí | No | No confiable en Mac |
+
+Para usar otros servicios, instala los extras correspondientes:
+
+```bash
+pip install "manim-voiceover[servicio_de_voz]"
+```
+
+Reemplaza `servicio_de_voz` con: elevenlabs, coqui, gtts, openai, o pyttsx3.
+
+Consulta la [documentación de Manim Voiceover](https://docs.manim.community/en/stable/guides/add_voiceovers.html) para más detalles.
 
 ## 🤝 Contribuciones
 
-Las contribuciones son bienvenidas. Si encuentras algún error o tienes sugerencias para mejorar las animaciones, no dudes en abrir un issue o enviar un pull request.
+¡Tus contribuciones son bienvenidas! Si encuentras errores o tienes ideas para mejorar, abre un issue o envía un pull request.
 
 ## 🔗 Enlaces Útiles
 
-- [📺 Mi Canal de YouTube](https://www.youtube.com/@EnriqueDelto)
-- [📚 Documentación de Manim](https://docs.manim.community/)
+- [📺 Canal de YouTube](https://www.youtube.com/@EnriqueDelto)
+- [📚 Docs de Manim](https://docs.manim.community/)
+- [🎙️ Guía de Manim Voiceover](https://docs.manim.community/en/stable/guides/add_voiceovers.html)
 
 ---
 

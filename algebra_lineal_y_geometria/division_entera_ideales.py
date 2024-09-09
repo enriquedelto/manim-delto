@@ -6,8 +6,8 @@ class DivisionEntera(VoiceoverScene):
     def construct(self):
         self.set_speech_service(
             AzureService(
-                voice="es-ES-ElviraNeural",
-                style="newscast-casual"
+                voice="es-ES-AlvaroNeural",
+                style="serious"
             )
         )
 
@@ -40,13 +40,14 @@ class DivisionEntera(VoiceoverScene):
         self.wait(1)
 
         # Secuencia "= (...,-3,-2,-1,0,1,2,3,...)"
-        num_sequence = MathTex(r" = (...,-3,-2,-1,0,1,2,3,...)", font_size=60).next_to(Z, RIGHT, buff=0.2)
-        num_elements = len(num_sequence[0])
-        for i in range(num_elements):
-            color = interpolate_color(BLUE, GREEN, i / num_elements)
-            num_sequence[0][i].set_color(color)
-        self.play(Write(num_sequence))
-        self.wait(1)
+        with self.voiceover(text="Recordemos que Z es el conjunto de los números enteros que incluye a los negativos, el cero y los positivos sin incluir decimales."):
+            num_sequence = MathTex(r" = (...,-3,-2,-1,0,1,2,3,...)", font_size=60).next_to(Z, RIGHT, buff=0.2)
+            num_elements = len(num_sequence[0])
+            for i in range(num_elements):
+                color = interpolate_color(BLUE, GREEN, i / num_elements)
+                num_sequence[0][i].set_color(color)
+            self.play(Write(num_sequence))
+            self.wait(1)
 
         # Desvanecer la secuencia de números
         self.play(FadeOut(num_sequence))
@@ -58,7 +59,7 @@ class DivisionEntera(VoiceoverScene):
         self.wait(1)
 
         # Mostrar b \neq 0 (misma coloración para b)
-        with self.voiceover(text="Ahora, veamos la condición para b."):
+        with self.voiceover(text="Ahora, veamos la condición para b, que indica que b no puede ser 0."):
             b_condition = MathTex(r"b", r"\neq 0").next_to(ab_integers, DOWN, buff=0.5)
             b_condition.set_color_by_tex("b", GREEN)
             self.play(Write(b_condition))
@@ -70,14 +71,15 @@ class DivisionEntera(VoiceoverScene):
         self.wait(1)
 
         # Mostrar q, r \in \mathbb{Z} en el centro de la pantalla
-        qr_integers = MathTex(r"q", r",", r"r", r"\in")
-        Z_qr = MathTex(r"\mathbb{Z}").next_to(qr_integers, RIGHT)
-        qr_integers.set_color_by_tex("q", YELLOW)
-        qr_integers.set_color_by_tex("r", ORANGE)
-        qr_group = VGroup(qr_integers, Z_qr).scale(1.5)
-        qr_group.move_to(ORIGIN)
-        self.play(Write(qr_group))
-        self.wait(1)
+        with self.voiceover(text="Introducimos q y r que también pertenecen al conjunto de los números enteros."):
+            qr_integers = MathTex(r"q", r",", r"r", r"\in")
+            Z_qr = MathTex(r"\mathbb{Z}").next_to(qr_integers, RIGHT)
+            qr_integers.set_color_by_tex("q", YELLOW)
+            qr_integers.set_color_by_tex("r", ORANGE)
+            qr_group = VGroup(qr_integers, Z_qr).scale(1.5)
+            qr_group.move_to(ORIGIN)
+            self.play(Write(qr_group))
+            self.wait(1)
 
         # Crear la línea vertical blanca
         separator_line = Line(start=UP * 1, end=DOWN * 1.5, color=WHITE)
@@ -93,7 +95,7 @@ class DivisionEntera(VoiceoverScene):
         # q y r aparecen en el centro de la pantalla con definiciones y colores
         tamaño_fuente = 72  # Puedes ajustar este valor según tus preferencias
 
-        with self.voiceover(text="Introducimos q como el coeficiente y r como el resto."):
+        with self.voiceover(text="Introducimos q como el coeficiente y r como el resto de la división de a por b.."):
             q_definition = MathTex(r"q", r": \text{coeficiente}", font_size=tamaño_fuente)
             q_definition[0].set_color(YELLOW)
 
