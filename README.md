@@ -1,10 +1,9 @@
-# Matemáticas Avanzadas en Manim
-
 <h1 align="center">Matemáticas Avanzadas en Manim</h1>
 
 <p align="center">
     <a href="https://www.youtube.com/@EnriqueDelto"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"></a>
-    <a href="https://github.com/enriquedelto/manim-delto/stargazers"><img src="https://img.shields.io/github/stars/enriquedelto/manim-delto?style=for-the-badge" alt="Stars"></a>
+    <a href="https://enriquedelto.neocities.org"><img src="https://img.shields.io/badge/Website-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Website"></a>
+    <a href="https://docs.manim.community/"><img src="https://img.shields.io/badge/Manim-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Manim Docs"></a>
 </p>
 
 <p align="center">
@@ -20,11 +19,14 @@
    git clone https://github.com/enriquedelto/manim-delto.git
    ```
 
-3. Navega a la carpeta del tema que te interese y ejecuta el script de Python correspondiente con Manim usando el comando 
+3. Navega a la carpeta del tema que te interese y ejecuta el script de Python correspondiente con Manim usando el comando:
     ```bash 
-    manim -pql archivo.py nombre_de_la_escena
+    manim -pql archivo.py NombreDeLaEscena
     ```
-    > 💡 `-pql` es para que se ejecute en modo quiet, low y loop, es opcional.
+    > 💡 Opciones de comando:
+    > - `-p`: Reproduce el video automáticamente al terminar.
+    > - `-ql`: Renderiza en calidad baja (480p) para una vista previa rápida.
+    > - Otras opciones de calidad: `-qm` (720p), `-qh` (1080p), `-qk` (4K).
 
 ## 🤝 Contribuciones
 
